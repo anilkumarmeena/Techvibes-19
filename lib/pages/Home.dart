@@ -37,7 +37,7 @@ class _HomeState extends State<Home>{
       },
           child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
-        child: Column(
+        child: Stack(
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width/2 -30,
@@ -51,11 +51,13 @@ class _HomeState extends State<Home>{
                     fit: BoxFit.cover,
                   )),
             ),
-            Text('Event',style: TextStyle(
+            Positioned(left: 20.0,top: 100.0,
+            child: Text('Event',style: TextStyle(
                     fontFamily: 'Open Sans',
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
-                    fontSize: 12.0),),           
+                    fontSize: 12.0),),)
+                       
           ],
         ),
       ),
