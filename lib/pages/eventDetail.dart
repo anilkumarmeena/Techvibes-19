@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class Detail extends StatefulWidget{
-  final tag;
-  Detail(this.tag);
+  final tag,image;
+  Detail(this.tag,this.image);
   @override
   _DetailState createState() => _DetailState();
 }
@@ -24,20 +24,19 @@ class _DetailState extends State<Detail>{
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              expandedHeight: 250.0,
+              expandedHeight: 300.0,
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  title: Text("TechVibes'19",
+                  title: Text(widget.tag,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
                       )),
                   background: Hero(
                        tag: widget.tag,
-                      child: Image.network(
-                        'https://leaderonomics.com/wp-content/uploads/2017/04/1807658-1-600x470.jpg',
+                      child: Image.asset(widget.image,fit: BoxFit.fill,
                       ),
                     ),
                   ),

@@ -8,44 +8,28 @@ class Home extends StatefulWidget{
 }
 
 class _HomeState extends State<Home>{
- List images = ["assets/admob.png","assets/bizquiz.png","assets/artboard.jpg","assets/cadewar.jpg","assets/freshercode.jpg",
+ List images = ["assets/webster.jpg","assets/admob.png","assets/bizquiz.png","assets/artboard.jpg","assets/cadewar.jpg","assets/freshercode.jpg",
                 "assets/ideate.jpg","assets/iplauction.jpg","assets/linefollower.jpg","assets/mindspark.jpg","assets/pitchstart.jpg",
-                "assets/poster.jpg","assets/robosoccer.jpg","assets/techtalk.jpg","assets/techx.jpg","assets/treasure.jpg","assets/webster.jpg"];
-
-  ScrollController _scrollController;
-  var title = "Techvibes 2019";
+                "assets/poster.jpg","assets/robosoccer.jpg","assets/techtalk.jpg","assets/techx.jpg","assets/treasure.jpg",];
+  List names = ["webster","admob","bizquiz","artboard","cadewar","freshercode","ideate","iplauction","linefollower","mindspark","pitchstart","poster","robosoccer","techtalk","techx","treasure",];
   @override
   void initState() {
     super.initState();
-    // _scrollController = ScrollController()..addListener(() => _isAppBarExpanded ?
-    //     setState(
-    //       () {
-    //         title = "";
-    //       },
-    //     ):setState((){
-    //       title = "Techvibes 2019";
-    //     }
-    //     ));
   }
-  // bool get _isAppBarExpanded {
-  //   return _scrollController.hasClients &&
-  //       _scrollController.offset > (200 - kToolbarHeight);
-  // }
 
   @override  
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: NestedScrollView(
-        controller: _scrollController,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
             elevation: 0.0,
             centerTitle: true,
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Colors.black87,
             pinned: false,
-            floating: true,
+            floating: false,
             snap: false,
             // actions: <Widget>[
             //   new Stack(
@@ -53,7 +37,7 @@ class _HomeState extends State<Home>{
             //       IconButton(
             //         icon: Icon(
             //           Icons.notifications,
-            //           color: Colors.white,
+            //           color: Colors.black,
             //           size: 25,
             //         ),
             //         onPressed: () {
@@ -85,14 +69,8 @@ class _HomeState extends State<Home>{
             //     ],
             //   ),
             // ],
-            expandedHeight: 300,
+            expandedHeight: 350,
             flexibleSpace: FlexibleSpaceBar(
-                  // centerTitle: true,
-                  // title: Text(title,
-                  //     style: TextStyle(
-                  //       color: Colors.white,
-                  //       fontSize: 16.0,
-                  //     )),
               background: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -101,30 +79,40 @@ class _HomeState extends State<Home>{
                 child: Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(top: 250.0, left: 10.0, bottom: 20.0),
+                      height: 374,
+                      color: Colors.white,
+                      padding: EdgeInsets.only(top: 50.0, left: 10.0, bottom: 0.0),
                       width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: new BorderRadius.only(
-                            bottomLeft: const Radius.circular(25.0),
-                            bottomRight: const Radius.circular(25.0)),
-                        color: Colors.deepPurple,
-                      ),
+                      // decoration: BoxDecoration(
+                      //   borderRadius: new BorderRadius.only(
+                      //       bottomLeft: const Radius.circular(25.0),
+                      //       bottomRight: const Radius.circular(25.0)),
+                      //   color: Colors.black87,
+                      // ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text("userData['name']",
+                          Text("TECH",
                               style: TextStyle(
                                 fontFamily: 'Quicksand',
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 30.0,
                               )),
-                          Text("userData['email']",
+                          Text("VIBES'19",
                               style: TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12.0,
+                                fontFamily: 'Quicksand',
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 30.0,
+                              )),
+                          Text("// 6'th-1'st Nov, BIT JAIPUR",
+                              style: TextStyle(
+                                fontFamily: 'Quicksand',
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 25.0,
                               )),
                         ],
                       ),
@@ -136,13 +124,21 @@ class _HomeState extends State<Home>{
           ),
           ];
         },
-        body: new ListView.builder
-            (
-              itemCount: images.length,
-              itemBuilder: (BuildContext ctxt, int index) {
-              return eventCard(context,"web",images[index]);
+        body: Container(
+          decoration: BoxDecoration(
+                        borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(25.0),
+                            topRight: const Radius.circular(25.0)),
+                        color: Color(0xff121212,),
+                      ),
+          child: new ListView.builder
+              (
+                itemCount: images.length,
+                itemBuilder: (BuildContext ctxt, int index) {
+                return eventCard(context,names[index],images[index]);
     }
-          )
+            ),
+        )
     ));
   }
 
@@ -151,37 +147,47 @@ class _HomeState extends State<Home>{
       onTap:(){
       Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Detail(tag)),
+                MaterialPageRoute(builder: (context) => Detail(tag,image)),
               );   
       },
-          child: Container(
+      child: Container(
         margin: EdgeInsets.only(left: 20.0,right: 20,bottom: 30),
         child: Stack(
             children: <Widget>[
-               Container(
+               Hero( tag: tag,
+                      child:
+                      Container(
               height: 300,
-              padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                  )),child:
-                  Container(
+                  boxShadow: [new BoxShadow(
+            color: Colors.white,
+            blurRadius: 10.0,
+          ),],
+          image: DecorationImage(
+            image: AssetImage(image),
+            fit: BoxFit.cover,
+          ))
+          ),),
+            Positioned(
+              left: 20,
+              top: 220,
+              child: Container(
+                height: 60,
+                width: 300,
                     decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10.0),
                   ),
-                    margin: EdgeInsets.only(left: 15,right: 15,top: 220,bottom: 10),
                     child: Center(
                       child: Text('Webster Hackathon',style: TextStyle(
                         fontFamily: 'Open Sans',
-                        color: Colors.black,
+                        color: Colors.purple[200],
                         fontWeight: FontWeight.w600,
                         fontSize: 25.0),),
                   ),),
-            ),                  
+            )                  
           ],
         ),
       ),
