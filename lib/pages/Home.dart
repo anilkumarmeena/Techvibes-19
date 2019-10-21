@@ -11,7 +11,8 @@ class _HomeState extends State<Home>{
  List images = ["assets/webster.jpg","assets/admob.png","assets/bizquiz.png","assets/artboard.jpg","assets/cadewar.jpg","assets/freshercode.jpg",
                 "assets/ideate.jpg","assets/iplauction.jpg","assets/linefollower.jpg","assets/mindspark.jpg","assets/pitchstart.jpg",
                 "assets/poster.jpg","assets/robosoccer.jpg","assets/techtalk.jpg","assets/techx.jpg","assets/treasure.jpg",];
-  List names = ["webster","admob","bizquiz","artboard","cadewar","freshercode","ideate","iplauction","linefollower","mindspark","pitchstart","poster","robosoccer","techtalk","techx","treasure",];
+  List names = ["webster","admob","bizquiz","artboard","codewar","freshercode","ideate","iplauction","linefollower","mindspark","pitchstart","poster","robosoccer","techtalk","techx","treasure",];
+  
   @override
   void initState() {
     super.initState();
@@ -20,68 +21,70 @@ class _HomeState extends State<Home>{
   @override  
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff004851),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
             elevation: 0.0,
             centerTitle: true,
-            backgroundColor: Colors.black87,
+            backgroundColor: Color(0xff004851),
             pinned: false,
             floating: false,
             snap: false,
-            // actions: <Widget>[
-            //   new Stack(
-            //     children: <Widget>[
-            //       IconButton(
-            //         icon: Icon(
-            //           Icons.notifications,
-            //           color: Colors.black,
-            //           size: 25,
-            //         ),
-            //         onPressed: () {
-            //         },
-            //       ),
-            //   new Positioned(
-            //               right: 10,
-            //               top: 10,
-            //               child: Container(
-            //                       padding: EdgeInsets.all(2),
-            //                       decoration: new BoxDecoration(
-            //                         color: Colors.red,
-            //                         borderRadius: BorderRadius.circular(5),
-            //                       ),
-            //                       constraints: BoxConstraints(
-            //                         minWidth: 14,
-            //                         minHeight: 14,
-            //                       ),
-            //                       child: Text(
-            //                         "5",
-            //                         style: TextStyle(
-            //                           color: Colors.white,
-            //                           fontSize: 8,
-            //                         ),
-            //                         textAlign: TextAlign.center,
-            //                       ),
-            //                     ),
-            //             )
-            //     ],
-            //   ),
-            // ],
-            expandedHeight: 350,
+            actions: <Widget>[
+              new Stack(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.notifications,
+                      color: Colors.black,
+                      size: 25,
+                    ),
+                    onPressed: () {
+                    },
+                  ),
+              new Positioned(
+                          right: 10,
+                          top: 10,
+                          child: Container(
+                                  padding: EdgeInsets.all(2),
+                                  decoration: new BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  constraints: BoxConstraints(
+                                    minWidth: 14,
+                                    minHeight: 14,
+                                  ),
+                                  child: Text(
+                                    "5",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                        )
+                ],
+              ),
+            ],
+            expandedHeight: 380,
             flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              title: Icon(Icons.arrow_drop_up,size: 20,),
               background: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xff004851),
                 ),
                 alignment: Alignment.center,
                 child: Column(
                   children: <Widget>[
                     Container(
                       height: 374,
-                      color: Colors.white,
-                      padding: EdgeInsets.only(top: 50.0, left: 10.0, bottom: 0.0),
+                      color: Color(0xff004851),
+                      padding: EdgeInsets.only(top: 60.0, left: 10.0, bottom: 0.0),
                       width: MediaQuery.of(context).size.width,
                       // decoration: BoxDecoration(
                       //   borderRadius: new BorderRadius.only(
@@ -95,25 +98,29 @@ class _HomeState extends State<Home>{
                         children: <Widget>[
                           Text("TECH",
                               style: TextStyle(
-                                fontFamily: 'Quicksand',
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 30.0,
+                                fontFamily: 'segeo',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 70.0,
+                                // fontStyle: FontStyle.italic
                               )),
                           Text("VIBES'19",
                               style: TextStyle(
-                                fontFamily: 'Quicksand',
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 30.0,
+                                fontFamily: 'segeo',
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 75.0,
                               )),
-                          Text("// 6'th-1'st Nov, BIT JAIPUR",
-                              style: TextStyle(
-                                fontFamily: 'Quicksand',
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 25.0,
-                              )),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40),
+                            child: Text("// 6'th-7'st Nov, BIT JAIPUR",
+                                style: TextStyle(
+                                  fontFamily: 'seoge',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 25.0,
+                                )),
+                          ),
                         ],
                       ),
                     ),
@@ -125,11 +132,16 @@ class _HomeState extends State<Home>{
           ];
         },
         body: Container(
+          margin: EdgeInsets.only(top: 30.0),
           decoration: BoxDecoration(
                         borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(25.0),
-                            topRight: const Radius.circular(25.0)),
-                        color: Color(0xff121212,),
+                            topLeft: const Radius.circular(15.0),
+                            topRight: const Radius.circular(15.0)),
+                        color: Color(0xff016C7A,),
+                        boxShadow: [new BoxShadow(
+            color: Colors.white,
+            blurRadius: 20.0,
+          ),],
                       ),
           child: new ListView.builder
               (
@@ -151,7 +163,7 @@ class _HomeState extends State<Home>{
               );   
       },
       child: Container(
-        margin: EdgeInsets.only(left: 20.0,right: 20,bottom: 30),
+        margin: EdgeInsets.only(left: 25.0,right: 25,bottom: 30,top: 20),
         child: Stack(
             children: <Widget>[
                Hero( tag: tag,
@@ -161,33 +173,36 @@ class _HomeState extends State<Home>{
               decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: [new BoxShadow(
-            color: Colors.white,
-            blurRadius: 10.0,
-          ),],
+          //         boxShadow: [new BoxShadow(
+          //   color: Colors.black,
+          //   blurRadius: 10.0,
+          // ),],
           image: DecorationImage(
             image: AssetImage(image),
             fit: BoxFit.cover,
           ))
           ),),
             Positioned(
-              left: 20,
-              top: 220,
+              left: 0,
+              top: 230,
               child: Container(
                 height: 60,
-                width: 300,
+                width: 200,
                     decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10.0),
+                  color: Color(0xff004851),
+                  borderRadius: new BorderRadius.only(
+                            topRight: const Radius.circular(15.0),
+                            bottomRight: const Radius.circular(15.0)),
                   ),
-                    child: Center(
-                      child: Text('Webster Hackathon',style: TextStyle(
-                        fontFamily: 'Open Sans',
-                        color: Colors.purple[200],
-                        fontWeight: FontWeight.w600,
-                        fontSize: 25.0),),
-                  ),),
-            )                  
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Text(tag,style: TextStyle(
+                          fontFamily: 'segoe',
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 25.0),),
+                      ),
+                  ),),                 
           ],
         ),
       ),

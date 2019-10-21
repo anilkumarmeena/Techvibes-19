@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:techvibes19/pages/Home.dart';
+import 'package:flutter/services.dart';
+import 'package:techvibes19/pages/login.dart';
 
-void main() => runApp(MyApp());
+void main() {runApp(MyApp());
+ SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Color(0xff004851), // navigation bar color
+    statusBarColor: Color(0xff004851), // status bar color
+    // systemNavigationBarDividerColor: Color(0xff004851),
+  ));
+} 
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -20,9 +27,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.teal,
       ),
-      home: Home(),
+      home: Login(),
     );
   }
 }
