@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:techvibes19/pages/eventDetail.dart';
+import 'package:techvibes19/pages/temp.dart';
 
 
 class Home extends StatefulWidget{
@@ -11,7 +12,7 @@ class _HomeState extends State<Home>{
  List images = ["assets/webster.jpg","assets/admob.png","assets/bizquiz.png","assets/artboard.jpg","assets/cadewar.jpg","assets/freshercode.jpg",
                 "assets/ideate.jpg","assets/iplauction.jpg","assets/linefollower.jpg","assets/mindspark.jpg","assets/pitchstart.jpg",
                 "assets/poster.jpg","assets/robosoccer.jpg","assets/techtalk.jpg","assets/techx.jpg","assets/treasure.jpg",];
-  List names = ["webster","admob","bizquiz","artboard","codewar","freshercode","ideate","iplauction","linefollower","mindspark","pitchstart","poster","robosoccer","techtalk","techx","treasure",];
+  List names = ["Webster Hackathon","Admob","BizQuiz","artboard","codewar","freshercode","ideate","iplauction","linefollower","mindspark","pitchstart","poster","robosoccer","techtalk","techx","treasure",];
   
   @override
   void initState() {
@@ -22,6 +23,7 @@ class _HomeState extends State<Home>{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff004851),
+      floatingActionButton: FancyFab(),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -32,48 +34,52 @@ class _HomeState extends State<Home>{
             pinned: false,
             floating: false,
             snap: false,
-            actions: <Widget>[
-              new Stack(
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      Icons.notifications,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                    onPressed: () {
-                    },
-                  ),
-              new Positioned(
-                          right: 10,
-                          top: 10,
-                          child: Container(
-                                  padding: EdgeInsets.all(2),
-                                  decoration: new BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  constraints: BoxConstraints(
-                                    minWidth: 14,
-                                    minHeight: 14,
-                                  ),
-                                  child: Text(
-                                    "5",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 8,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                        )
-                ],
-              ),
-            ],
-            expandedHeight: 380,
+            // actions: <Widget>[
+            //   new Stack(
+            //     children: <Widget>[
+            //       IconButton(
+            //         icon: Icon(
+            //           Icons.notifications,
+            //           color: Colors.white,
+            //           size: 25,
+            //         ),
+            //         onPressed: () {
+            //            Navigator.push(
+            //             context,
+            //             MaterialPageRoute(builder: (context) => FancyFab()),
+            //           );
+            //         },
+            //       ),
+            //   new Positioned(
+            //               right: 10,
+            //               top: 10,
+            //               child: Container(
+            //                       padding: EdgeInsets.all(2),
+            //                       decoration: new BoxDecoration(
+            //                         color: Colors.red,
+            //                         borderRadius: BorderRadius.circular(5),
+            //                       ),
+            //                       constraints: BoxConstraints(
+            //                         minWidth: 14,
+            //                         minHeight: 14,
+            //                       ),
+            //                       child: Text(
+            //                         "5",
+            //                         style: TextStyle(
+            //                           color: Colors.white,
+            //                           fontSize: 8,
+            //                         ),
+            //                         textAlign: TextAlign.center,
+            //                       ),
+            //                     ),
+            //             )
+            //     ],
+            //   ),
+            // ],
+            expandedHeight: 276,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
-              title: Icon(Icons.arrow_drop_up,size: 20,),
+              title: Icon(Icons.arrow_drop_up,size: 20,color: Colors.white,),
               background: Container(
                 decoration: BoxDecoration(
                   color: Color(0xff004851),
@@ -82,7 +88,7 @@ class _HomeState extends State<Home>{
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 374,
+                      height: 300,
                       color: Color(0xff004851),
                       padding: EdgeInsets.only(top: 60.0, left: 10.0, bottom: 0.0),
                       width: MediaQuery.of(context).size.width,
@@ -96,29 +102,31 @@ class _HomeState extends State<Home>{
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text("TECH",
-                              style: TextStyle(
-                                fontFamily: 'segeo',
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 70.0,
-                                // fontStyle: FontStyle.italic
-                              )),
-                          Text("VIBES'19",
-                              style: TextStyle(
-                                fontFamily: 'segeo',
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 75.0,
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 40),
-                            child: Text("// 6'th-7'st Nov, BIT JAIPUR",
+                          Center(child: Image.asset('assets/logo.png',width: 160,)),
+                          Center(
+                            child: Text("TECHVIBES'19",
+                                style: TextStyle(
+                                  fontFamily: 'segeo',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 40.0,
+                                  // fontStyle: FontStyle.italic
+                                )),
+                          ),
+                          // Text("VIBES'19",
+                          //     style: TextStyle(
+                          //       fontFamily: 'segeo',
+                          //       color: Colors.white,
+                          //       fontWeight: FontWeight.w900,
+                          //       fontSize: 75.0,
+                          //     )),
+                          Center(
+                            child: Text("6'th-7'st Nov, BIT JAIPUR",
                                 style: TextStyle(
                                   fontFamily: 'seoge',
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 25.0,
+                                  fontSize: 15.0,
                                 )),
                           ),
                         ],
@@ -132,7 +140,7 @@ class _HomeState extends State<Home>{
           ];
         },
         body: Container(
-          margin: EdgeInsets.only(top: 30.0),
+          margin: EdgeInsets.only(top: 25.0),
           decoration: BoxDecoration(
                         borderRadius: new BorderRadius.only(
                             topLeft: const Radius.circular(15.0),
@@ -173,10 +181,10 @@ class _HomeState extends State<Home>{
               decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10.0),
-          //         boxShadow: [new BoxShadow(
-          //   color: Colors.black,
-          //   blurRadius: 10.0,
-          // ),],
+                  boxShadow: [new BoxShadow(
+            color: Colors.white,
+            blurRadius: 10.0,
+          ),],
           image: DecorationImage(
             image: AssetImage(image),
             fit: BoxFit.cover,

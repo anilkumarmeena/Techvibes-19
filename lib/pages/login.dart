@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:techvibes19/pages/Home.dart';
 import 'package:techvibes19/pages/signup.dart';
 
 
 
-class Login extends StatefulWidget{
-
-    
+class Login extends StatefulWidget{    
   @override
   _LoginState createState() => _LoginState();
 }
@@ -38,12 +37,11 @@ class _LoginState extends State<Login> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(vertical: 150,horizontal: 30),
+                padding: EdgeInsets.symmetric(vertical: 100,horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                //  Image.asset('assets/logo.png',width: 70,),
-                //   Image.asset('assets/logo-text.png',width: 180,),
+                 Image.asset('assets/logo.png',width: 100,),
                   SizedBox(height: 30.0,),
                    Text('Log In',style:TextStyle(
                       color: Colors.black,
@@ -223,7 +221,10 @@ Container login(context) {
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
         onPressed: () { 
-          //  startlogin();
+            Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
         },
       ),
     ):Container(

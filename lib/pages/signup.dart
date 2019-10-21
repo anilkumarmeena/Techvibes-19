@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:techvibes19/pages/Home.dart';
 import 'package:techvibes19/pages/login.dart';
 import 'package:techvibes19/pages/otp.dart';
 
@@ -19,9 +21,11 @@ class _SignupState extends State<Signup> {
   double _kPickerSheetHeight = 216.0;   
   DateTime dateAndroid;
   var isLoading = false ;
+  var verificationId;
 final TextEditingController _addressController = new TextEditingController();
   final TextEditingController _pincodeController = new TextEditingController();
   final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _rollnoController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
   final TextEditingController _nameController = new TextEditingController();
   final TextEditingController _mobileController = new TextEditingController();
@@ -49,8 +53,7 @@ final TextEditingController _addressController = new TextEditingController();
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset('assets/logo.png',width: 70,),
-                  Image.asset('assets/logo-text.png',width: 180,),
+                    Image.asset('assets/logo.png',width: 100,),
                     SizedBox(
                       height: 30.0,
                     ),
@@ -212,7 +215,7 @@ final TextEditingController _addressController = new TextEditingController();
       borderRadius: BorderRadius.circular(4.0),
       child: TextField(
         keyboardType: TextInputType.emailAddress,
-         controller: _emailController,
+         controller: _rollnoController,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             border: InputBorder.none,
@@ -405,10 +408,7 @@ final TextEditingController _addressController = new TextEditingController();
         color: Colors.transparent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
         onPressed: () {
-           Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Otp()),
-                      );
+          _sendCodeToPhoneNumber();
         },
       ),
     ):Container(
@@ -564,6 +564,51 @@ final TextEditingController _addressController = new TextEditingController();
                     );
                   
   }
+
+  Future<void> _sendCodeToPhoneNumber() async {
+    final PhoneVerificationCompleted verificationCompleted = (AuthCredential credential) {
+         Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
+      setState(() {
+
+          print('Inside _sendCodeToPhoneNumber: signInWithPhoneNumber auto succeeded: $credential');
+      });
+    };
+
+    final PhoneVerificationFailed verificationFailed = (AuthException authException) {
+       
+      setState(() {
+        print('Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');}
+        );
+    };
+
+    final PhoneCodeSent codeSent =
+        (String verificationId, [int forceResendingToken]) async {
+      this.verificationId = verificationId;
+      print("code sent to " + _mobileController.text);
+    };
+
+    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+        (String verificationId) {
+      this.verificationId = verificationId;
+      print("Please check mobile");
+       Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Otp(verificationId,false)),
+                      );
+    };
+
+     await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: "+91"+_mobileController.text,
+        timeout: const Duration(seconds: 5),
+        verificationCompleted: verificationCompleted,
+        verificationFailed: verificationFailed,
+        codeSent: codeSent,
+        codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+  }
+
 }
 
 

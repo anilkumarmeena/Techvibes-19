@@ -1,9 +1,12 @@
-import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:techvibes19/pages/Home.dart';
 
 
 class Otp extends StatefulWidget {
+  final varificationId,loggedin;
+  Otp(this.varificationId,this.loggedin);
   @override
   OtpState createState() {
     return new OtpState();
@@ -32,6 +35,7 @@ class OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   bool isLoading = false;
   @override
   void initState() {
+     
     super.initState();
     animationController =
         AnimationController(duration: Duration(seconds: 3), vsync: this);
@@ -65,12 +69,12 @@ class OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                     animation.value * width, 0.0, 0.0),
                 child: Container(
                   padding: EdgeInsets.only(top: 30.0),
-                  // child: Center(
-                  //   child: Image.asset(
-                  //     'assets/logo.png',
-                  //     width: 100.0,
-                  //   ),
-                  // ),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/logo.png',
+                      width: 100.0,
+                    ),
+                  ),
                 ),
               ),
               Transform(
@@ -181,7 +185,7 @@ class OtpState extends State<Otp> with SingleTickerProviderStateMixin {
               color: Colors.transparent,
               onPressed: () {
                 setState(() {
-                  // emailotp();
+                  _signInWithPhoneNumber(widget.varificationId,_otp1Controller.text+_otp2Controller.text+_otp3Controller.text+_otp4Controller.text+_otp5Controller.text+_otp6Controller.text);
                 });
               },
             ),
@@ -448,5 +452,28 @@ class OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                     fontSize: 14.0))),
       ),
     );
+  }
+  
+
+_signInWithPhoneNumber(_verificationId,code) async {
+    FirebaseAuth _auth;
+   AuthCredential credential =  PhoneAuthProvider.getCredential (
+      verificationId: _verificationId,
+      smsCode: code,
+    );
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
+    final FirebaseUser currentUser = await _auth.currentUser();
+    assert(user.uid == currentUser.uid);
+    setState(() {
+      if (user != null) {
+         Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
+      } else {
+        print("sorry wrong otp");
+      }
+    });
   }
 }
