@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +35,7 @@ final TextEditingController _addressController = new TextEditingController();
         children: <Widget>[
           Stack(
             children: <Widget>[
+              
                 Positioned(
                 top: 10,
                 left: 0,
@@ -199,7 +198,17 @@ final TextEditingController _addressController = new TextEditingController();
                     )
                   ],
                 ),
-              )
+              ),
+              isLoading==true? Container(
+                padding: const EdgeInsets.only(top: 400),
+                child: Center(
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator()
+                    ),
+                ),
+              ):Container(),
             ],
           )
         ],
@@ -387,7 +396,7 @@ final TextEditingController _addressController = new TextEditingController();
   }
 
   Container login(context) {
-    return !isLoading?Container(
+    return Container(
       width: double.infinity,
       height: 43.0,
       // padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0,10.0),
@@ -408,37 +417,10 @@ final TextEditingController _addressController = new TextEditingController();
         color: Colors.transparent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
         onPressed: () {
-          _sendCodeToPhoneNumber();
+         !isLoading? _sendCodeToPhoneNumber():print('wait');
         },
       ),
-    ):Container(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
-            height: 43.0,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.0),
-                color: Color(0xffD95068)),
-            child: FlatButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Color(0xff00d2ff),
-                      strokeWidth: 2.0,
-                      valueColor:
-                          new AlwaysStoppedAnimation<Color>(Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-              textColor: Colors.white,
-              color: Colors.transparent,
-              onPressed: () {},
-            ),
-          );
+    );
   }
 
    
@@ -566,8 +548,14 @@ final TextEditingController _addressController = new TextEditingController();
   }
 
   Future<void> _sendCodeToPhoneNumber() async {
+    setState(() {
+          isLoading = true;
+    });
     final PhoneVerificationCompleted verificationCompleted = (AuthCredential credential) {
-         Navigator.push(
+      setState(() {
+          isLoading = false;
+    });
+         Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => Home()),
                       );
@@ -590,10 +578,12 @@ final TextEditingController _addressController = new TextEditingController();
       print("code sent to " + _mobileController.text);
     };
 
-    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
-        (String verificationId) {
+    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {
       this.verificationId = verificationId;
       print("Please check mobile");
+      setState(() {
+          isLoading = false;
+    });
        Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Otp(verificationId,false)),
@@ -602,7 +592,7 @@ final TextEditingController _addressController = new TextEditingController();
 
      await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: "+91"+_mobileController.text,
-        timeout: const Duration(seconds: 5),
+        timeout: const Duration(seconds: 1),
         verificationCompleted: verificationCompleted,
         verificationFailed: verificationFailed,
         codeSent: codeSent,

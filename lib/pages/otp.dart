@@ -456,8 +456,8 @@ class OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   
 
 _signInWithPhoneNumber(_verificationId,code) async {
-    FirebaseAuth _auth;
-   AuthCredential credential =  PhoneAuthProvider.getCredential (
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+   AuthCredential credential =   PhoneAuthProvider.getCredential (
       verificationId: _verificationId,
       smsCode: code,
     );
@@ -467,10 +467,10 @@ _signInWithPhoneNumber(_verificationId,code) async {
     assert(user.uid == currentUser.uid);
     setState(() {
       if (user != null) {
-         Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Home()),
-                      );
+         Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Home()),
+        );
       } else {
         print("sorry wrong otp");
       }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
+import 'package:techvibes19/pages/registered.dart';
 
 class FancyFab extends StatefulWidget {
   final Function() onPressed;
@@ -74,7 +76,12 @@ class _FancyFabState extends State<FancyFab>
     return Container(
       child: FloatingActionButton(
         heroTag: 'registered',
-        onPressed: null,
+        onPressed: (){
+          Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Registered()),
+                      );
+        },
         tooltip: 'Add',
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,7 +131,9 @@ class _FancyFabState extends State<FancyFab>
     return Container(
       child: FloatingActionButton(
         heroTag: 'gallery',
-        onPressed: null,
+        onPressed: (){
+          Share.share('check out my app https://example.com');
+        },
         tooltip: 'Image',
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,

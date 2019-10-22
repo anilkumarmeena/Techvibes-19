@@ -9,12 +9,10 @@ class Detail extends StatefulWidget{
 }
 
 class _DetailState extends State<Detail>{
- List images = [""];
   @override
   void initState() {
     super.initState();
   }
-
 
   @override  
   Widget build(BuildContext context) {
