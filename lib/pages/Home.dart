@@ -145,7 +145,7 @@ class _HomeState extends State<Home>{
                         borderRadius: new BorderRadius.only(
                             topLeft: const Radius.circular(15.0),
                             topRight: const Radius.circular(15.0)),
-                        color: Color(0xff016C7A,),
+                        color: Color(0xff016C7A),
                         boxShadow: [new BoxShadow(
             color: Colors.white,
             blurRadius: 20.0,
