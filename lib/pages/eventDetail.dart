@@ -17,6 +17,26 @@ class _DetailState extends State<Detail>{
   @override  
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton:  Container(
+      width: MediaQuery.of(context).size.width - 32.0,
+      height: 50.0,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(3.0), color:Color(0xff0EDB00) ),
+      child: FlatButton(
+        child: Text(
+          'Register Now',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontFamily: 'Pathway Gothic One',
+          ),
+        ), 
+        textColor: Colors.white,
+        color: Colors.transparent,
+        onPressed: () {
+         
+        },
+      ),
+    ),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -41,9 +61,16 @@ class _DetailState extends State<Detail>{
             ),
           ];
         },
-        body: Center(
-          child: Text("Event Details")
-          )
+        body: ListView(
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              color: Colors.grey[100],
+              padding: EdgeInsets.all(15),
+              child: Text("event detail"),
+          ),
+          ],
+        )
 
     ));
   }
