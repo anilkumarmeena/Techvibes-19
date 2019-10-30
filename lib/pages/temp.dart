@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:techvibes19/pages/Aboutus.dart';
 import 'package:techvibes19/pages/registered.dart';
 
 class FancyFab extends StatefulWidget {
@@ -158,8 +159,13 @@ class _FancyFabState extends State<FancyFab>
     return Container(
       child: FloatingActionButton(
         heroTag: 'c',
-        onPressed: null,
-        tooltip: 'Inbox',
+        onPressed: (){
+          Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Aboutus()),
+                      );
+        },
+        tooltip: 'About',
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
