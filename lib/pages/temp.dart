@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
-import 'package:techvibes/pages/registered.dart';
+import 'package:techvibes19/pages/Aboutus.dart';
+import 'package:techvibes19/pages/registered.dart';
 
 class FancyFab extends StatefulWidget {
   final Function() onPressed;
