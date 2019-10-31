@@ -158,8 +158,13 @@ class _FancyFabState extends State<FancyFab>
     return Container(
       child: FloatingActionButton(
         heroTag: 'c',
-        onPressed: null,
-        tooltip: 'Inbox',
+        onPressed: (){
+          Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Aboutus()),
+                      );
+        },
+        tooltip: 'About',
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
