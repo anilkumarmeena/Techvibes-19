@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:techvibes19/pages/Home.dart';
+import 'package:techvibes/pages/Home.dart';
 
 void main() {runApp(MyApp());
  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

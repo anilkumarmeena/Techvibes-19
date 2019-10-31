@@ -64,20 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
-  firebase_auth:
-    dependency: "direct main"
-    description:
-      name: firebase_auth
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.14.0+5"
-  firebase_core:
-    dependency: transitive
-    description:
-      name: firebase_core
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.0+9"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -101,7 +87,7 @@ packages:
       name: image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.7"
   matcher:
     dependency: transitive
     description:
@@ -150,7 +136,7 @@ packages:
       name: share
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.3"
+    version: "0.6.3+1"
   sky_engine:
     dependency: transitive
     description: flutter

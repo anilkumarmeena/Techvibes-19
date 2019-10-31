@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:techvibes19/pages/eventDetail.dart';
-import 'package:techvibes19/pages/temp.dart';
+import 'package:techvibes/pages/eventDetail.dart';
+import 'package:techvibes/pages/temp.dart';
+
 
 
 class Home extends StatefulWidget{

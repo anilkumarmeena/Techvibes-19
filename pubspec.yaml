@@ -1,5 +1,5 @@
-name: techvibes19
-description: A new Flutter project.
+name: techvibes
+description: A new Flutter application.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -11,13 +11,10 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
-
-# module:
-#   androidX: true // Add this line.
 
 dependencies:
   flutter:
@@ -26,7 +23,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  firebase_auth: ^0.14.0+5
   share: ^0.6.3
   flutter_launcher_icons: "^0.7.3"
 
@@ -34,8 +30,6 @@ flutter_icons:
   android: "launcher_icon" 
   ios: true
   image_path: "assets/logo.png"
-
-
 
 dev_dependencies:
   flutter_test:
@@ -86,16 +80,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: seoge
-      fonts:
-        # - asset: fonts/Segoe.ttf
-        - asset: fonts/SegoeBlack.ttf
-    # - family: Trajan Pro
-    #   fonts:
-    #     - asset: fonts/Segoe.ttf
-    #     - asset: fonts/Segoe_Bold.ttf
-    #       weight: 700
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
